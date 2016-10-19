@@ -11,6 +11,13 @@ using namespace std;
 
 void takeJobs(int threadNum, queue<int>* jobQueue, mutex* jobLock)
 {
+   /*
+   lock jobLock outside of the if statement to avoid the situation where the threads identify the queue to be non-empty and try 
+   to pop an item concurrently; unlock jobLock when an item is popped and the statement is printed, so other threads wouldn’t 
+   have to wait for the sleeping time. In addition, an else statement is added to unlock jobLock, which deals with the situation 
+   where the queue is indeed empty and the unlock part inside the if statement is skipped. 
+   */
+	
    while (1)
    {  
       jobLock->lock(); 
@@ -33,6 +40,11 @@ void takeJobs(int threadNum, queue<int>* jobQueue, mutex* jobLock)
 
 void makeJobs(int threadNum, queue<int>* jobQueue, mutex* jobLock)
 {
+   /*
+   lock jobLock when it pushes a new job to the queue and prints the statement, so no consumer thread would do anything until 
+   the producer thread unlocks jobLock. 
+   */
+	
    while (1)
    {  
       int jobLength = rand()%5 + 1;
