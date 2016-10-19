@@ -1,6 +1,6 @@
 # Producer-Consumer-Model-Threads-Race-Condition-
 
-This small project contains 1 main program and the command 'make all' will compile the entire project. Alternatively, you may compile according to the directions below.
+This small project contains 1 main program and you may compile according to the directions below.
 
 ---mapqueue---
 
