@@ -3,6 +3,7 @@
 This small project contains 1 main program and the command 'make all' will compile the entire project. Alternatively, you may compile according to the directions below.
 
 ---mapqueue---
+
 To compile: make mapqueue
 To run: ./mapqueue <number of consumer threads> (this command-line argument is optional)
 Description:
